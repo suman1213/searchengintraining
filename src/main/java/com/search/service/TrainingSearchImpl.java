@@ -13,12 +13,12 @@ public class TrainingSearchImpl implements TrainingSearch{
 	TrainingSearchDao trainingSearchDao;
 	
 	@Override
-	public boolean isValidLogin(String userName, String password) {
-		User user = trainingSearchDao.getByUnamePass(userName, password);
+	public User isValidLogin(String userName, String password) {
+		User user = trainingSearchDao.isValidLogin(userName, password);
 		if(user!= null){
-			return true;	
+			return user;	
 		}
-		return false;
+		return null;
 	}
 
 }
