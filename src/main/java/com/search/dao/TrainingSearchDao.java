@@ -6,9 +6,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import com.search.model.InputSearch;
 import com.search.model.User;
 
 public interface TrainingSearchDao extends CrudRepository<User, Serializable>{
 	@Query("SELECT usr FROM User usr where  username= :username and password= :password ")
 	public User isValidLogin(@Param("username")final String userName,@Param("password")final String password);
+	
+	
+	
+	@Query("SELECT inputSrch FROM InputSearch inputSrch where inputSrch.inputname= :userinput")
+	public InputSearch getInputSearch(@Param("userinput")final String userinput);
 }
