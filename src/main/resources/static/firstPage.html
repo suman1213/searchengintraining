@@ -9,10 +9,14 @@
 	src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	
+<script	src="util.js"></script>	
 <link rel="stylesheet" type="text/css"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
 <style>
+.search-button{
+}
 .navbar {
 	margin-bottom: 0;
 	background-color: #0D47A1;
@@ -42,6 +46,14 @@ input.island-button {
 
 h1.welcome {
 	margin-left: 16%;
+}
+
+
+
+
+.td {
+    padding-top: .5em;
+    padding-bottom: .5em;
 }
 </style>
 
@@ -132,7 +144,34 @@ h1.welcome {
 					<div class="island">
 						<h1 class="welcome">Welcome User !</h1>
 						<div class="ui-widget">
-							<label for="search">Search: </label> <input  id="searchId" onkeyup="doAjaxCall()">
+							<label for="search">Search: </label> <input  id="searchId" onkeyup="doAjaxCall()">   
+							
+							<input type="button" value ="Search" onclick="searchGo();"/>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4"></div>
+			</div>
+
+		</div>
+		
+		
+		<div class="container search-button" id="serchedItemDiv" style="margin-top: 10%; display: none;">
+			<div class="row">
+				<div class="col-sm-4"></div>
+				<div class="col-sm-4">
+					<div class="island">
+						<div class="ui-widget" >
+							<table >
+								<tr><td class="td"> <a>Example  Link </a></td></tr>
+								<tr><td class="td"> <a>Example Second Link </a></td></tr>
+								
+								
+								<tr><td class="td"> <a>Second Link </a></td></tr>
+							</table>
+							
+							
+							
 						</div>
 					</div>
 				</div>
