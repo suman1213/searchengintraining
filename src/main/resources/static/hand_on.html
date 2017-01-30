@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html >
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<title>search Engine</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+
+nav.navbar.navbar {
+    background-color: #0D47A1;
+}
+a.navbar-brand {
+    color: white;
+    font-family: 'Abril Fatface';
+    font-size: 180%;
+}
+
+a.headerLeft {
+    color: white;
+    font-family: 'Abril Fatface';
+	font-size: 100%;
+}
+div#colLeftRow1 {
+     margin-left: 3%;
+ }
+ 
+  .panel.panel-default {
+    height: 105%;
+}
+#myProgress {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background-color: #abaaaa;
+  margin-top: 3%;
+  border-radius: 6px;
+}
+
+#myBar {
+  position: absolute;
+  width: 60%;
+  height: 100%;
+  background-color: #4CAF50;
+  border-radius: 6px;
+}
+
+#label {
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+div#secondRow {
+    margin-top: 1%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+div#mainContent {
+    margin-left: 1%;
+}
+button.btn.btn-primary.button1 {
+    margin-left: 4%;
+    width: 100%;
+}
+button.btn.btn-primary.button2 {
+    width: 100%;
+}
+button.btn.btn-primary.button3 {
+    width: 90%;
+}
+.bodyStyle {
+    background-color: #dcd8d8;
+}
+</style>
+  </head>
+
+<body class="bodyStyle">
+<! -- Start of Header -->
+<nav class="navbar navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Search Engine</a>
+    </div>
+    
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#" class="headerLeft"><span class="glyphicon glyphicon-home"> </span> Home</a></li>
+      <li><a href="#" class="headerLeft"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+<! --End of Header -->  
+
+<div class="container-fuild">
+	<div class="row">
+		<div class="col-md-4" id="colLeftRow1"> 
+			 <div class="panel panel-default">
+				<div class="panel-body"><p>Aufgabe:</p>
+				<p>Bitte finden Sie den Speiseplan der Kantine in Hamburg Billerstedt und klicken darauf. </p>
+				<p>Für die Lösung erhalten Sie 50 Punkte.</p>
+				
+				</div>
+			</div>
+		</div>
+		<div class="col-md-7" id="colLeftRow1"> 
+			<div class="row">
+				<div class="col-md-12" style="margin-top: -15px;">
+					<div id="myProgress">
+						<div id="myBar">
+							<div id="label">60%
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" id="secondRow">
+				<div class="panel panel-default">
+					<div class="panel-body">Aktuelles Level : Neueinsteiger <br> Gesammelte Punkte: 60
+					</div>
+				</div>
+			</div>
+		</div>		
+	</div>	
+	
+	<div class="row">
+		<div class="col-md-12" id="mainContent"> 
+			<iframe src="sample.html" style="width:98%; height:400px;" frameborder="0">
+			</iframe>
+		</div>	
+	</div>
+	<div class="row">
+		<div class="col-md-3" > 
+			<button type="button"  class="btn btn-primary button1" id="aufgabe" onclick= "aufgabe();">Aufgabe Lösen</button>
+		</div>	
+		<div class="col-md-6" > 
+			<button type="button" class="btn btn-primary button2" id="hinweis" onclick="hinweis();"><< Hinweis zur Lösung erhalten >></button>
+		</div>	
+		<div class="col-md-3" > 
+			<button type="button" class="btn btn-primary button3" id="zuruck" onclick="zuruck();">zurück zur Erläuterung</button>
+		</div>	
+	</div>
+	
+	
+	
+	
+</div>
+	
+
+</body>
+
+<script>
+
+var aufgabe = function(){
+	
+	var temp = confirm("Press a button!");
+	
+	alert("Temp  : "  + temp);
+	
+}
+
+var handle =  function(e){
+    if(e.keyCode === 13){
+        e.preventDefault(); 
+
+        alert("Enter was pressed was presses");
+    }
+}
+</script>
+</html>

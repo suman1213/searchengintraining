@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html >
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<title>search Engine</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+body {
+    background-repeat: no-repeat;
+	background-image: url('img/background1.png');
+}
+p {
+    position: fixed;
+    margin-top: 9%;
+    margin-left: 16%;
+}
+input[type="text"] {
+    width: 454px;
+    height: 44px;
+}
+</style>
+
+
+  </head>
+<body>
+<p><input type="text" value="" id="searchElement" placeholder="Type here to search" onkeypress="handle(event);"></p>
+	
+
+</body>
+
+<script>
+
+var optionalKeyWords= ["Kantine","Speiseplan","and","or"];
+var mandatoryKeyWords=["Billerstedt"];
+//var megedArray= optionalKeyWords.concat(mandatoryKeyWords);
+
+//var totalKeyLength= optionalKeyWords.length + mandatoryKeyWords.length;
+var mandatFlag=0;
+var optionalFlag = 0;
+
+var handle =  function(e){
+    if(e.keyCode === 13){
+        e.preventDefault(); 
+
+        searchVal = document.getElementById("searchElement").value; 
+        alert(searchVal);
+        
+        var searchaElements= searchVal.split(" ");
+        
+        for (i=0; i<searchaElements.length; i++){
+        	for(j=0; j< mandatoryKeyWords.length; j++){
+        		if(searchaElements[i]==mandatoryKeyWords[j])
+        			mandatFlag++;
+        		break;
+        	}
+        	
+        	for(j=0; j<optionalKeyWords.length; j++) {
+        		if(searchaElements[i]==mandatoryKeyWords[j])
+        			optionalFlag++;
+        	}
+        }
+        
+        
+    }
+}
+
+</script>
+</html>

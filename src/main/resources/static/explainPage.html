@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html >
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<title>search Engine</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+
+nav.navbar.navbar {
+    background-color: #0D47A1;
+}
+a.navbar-brand {
+    color: white;
+    font-family: 'Abril Fatface';
+    font-size: 180%;
+}
+a.headerLeft {
+    color: white;
+    font-family: 'Abril Fatface';
+	font-size: 100%;
+}
+div#colLeft {
+    margin-left: 3%;
+	background-color: lightgray;
+    padding: 1%;
+    border-radius: 1%;
+}
+
+div#colLeftRow1 {
+     margin-left: 3%;
+ }
+ div#colRightRow1 {
+     margin-right: 1%;
+	  margin-left: 2%;
+ }
+  
+  div#colRightRow2 {
+  margin-top:1%;
+   margin-left: 2%;
+  }
+div#colRight {
+    margin-Right: 3%;
+    background-color: lightgray;
+    padding: 1%;
+    border-radius: 1%;
+	margin-left: 1%;
+}
+
+#myProgress {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background-color: #ddd;
+  margin-top: 3%;
+  border-radius: 6px;
+}
+
+#myBar {
+  position: absolute;
+  width: 60%;
+  height: 100%;
+  background-color: #4CAF50;
+  border-radius: 6px;
+}
+
+#label {
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+.panel-body {
+    background-color: #B2DFDB;
+}
+.nextButton {
+    margin-left: 83%;
+    margin-top: 1%;
+}
+button.btn.btn-primary {
+	width:45%;
+}
+</style>
+  </head>
+
+<body class="bodyStyle">
+<! -- Start of Header -->
+<nav class="navbar navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Search Engine</a>
+    </div>
+    
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#" class="headerLeft"><span class="glyphicon glyphicon-home"> </span> Home</a></li>
+      <li><a href="#" class="headerLeft"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+<! --End of Header -->  
+
+<div class="container-fuild">
+<div class="row">
+		<div class="col-md-4" id="colLeftRow1">
+		</div>
+		<div class="col-md-7" id="colRightRow1"> 
+			<div id="myProgress">
+				<div id="myBar">
+					<div id="label">60%
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4" id="colLeftRow1">
+		</div>
+		<div class="col-md-7" id="colRightRow2"> 
+			 <div class="panel panel-default">
+				<div class="panel-body">Aktuelles Level : Neueinsteiger <br> Gesammelte Punkte: 60	</div>
+			</div>
+		</div>
+	<div class="row">
+		<div class="col-md-4" id="colLeft" style="overflow-y: scroll;"> 
+			<p style="width:430px; height:400px;">	<b>Funktionen von Suchoperatoren</b> <br><br> 
+													<b>Der UND Operator</b><br>
+													Bei der Verwendung des UND Operators müssen der davor und der danach stehende Begriff in dem gesuchten Dokument enthalten sein.<br><br>
+													<b>Der OR Operator</b><br>
+													Bei dem OR-Operator werden die Ergebnisse angezeigt, bei denen mindestens einer des vor und nach dem Operator stehenden Begriffs enthalten ist.<br><br>
+													<b>Der NOT Operator </b><br>
+													Bei dem NOT Operator werden die Ergebnisse angezeigt, bei denen das nach dem NOT aufgeführte Wort nicht enthalten ist.
+													 </p>
+			
+		</div>
+		
+		<div class="col-md-7" id="colRight" > 
+			<iframe src="video/DEX_Explanatory_Video_20161222.mp4" style="width: 100%; height: 400px" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0">
+			</iframe> 
+		</div>
+	</div>
+	<div class="nextButton">
+		 <a class="btn btn-primary" href="hand_on.html">Next >></a></button>
+	</div>
+</div>
+
+
+</body>
+</html>

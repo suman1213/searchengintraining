@@ -87,9 +87,34 @@ h1.welcome {
 		        "id" : availableTags
 		    },
 			success : function(data) {
-				alert("success"+data);
+				//alert("success"+data);
 				console.log(data)
-				displayTexts(data)
+				//displayTexts(data)
+			},
+			error : function(e) {
+				alert("in error!!!");
+			},
+		});
+	
+	}
+	
+	
+	var searchGo =  doAjaxCall() {
+
+		var availableTags=document.getElementById("searchId").value; 
+		var res;
+	alert("doAjaxCall !!!!"+availableTags);
+
+	
+		$.ajax({
+			url : "getData",
+			data : {
+		        "id" : availableTags
+		    },
+			success : function(data) {
+				//alert("success"+data);
+				console.log(data)
+				//displayTexts(data)
 			},
 			error : function(e) {
 				alert("in error!!!");
@@ -122,7 +147,7 @@ h1.welcome {
 				</button>
 				<a class="navbar-brand" href="#">Training Search Engine</a>
 			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
+			<!-- <div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/	logout">Log Out</a></li>
 
@@ -131,7 +156,7 @@ h1.welcome {
 
 
 				</ul>
-			</div>
+			</div> -->
 		</div>
 	</nav>
 	<div id="header"
@@ -144,7 +169,7 @@ h1.welcome {
 					<div class="island">
 						<h1 class="welcome">Welcome User !</h1>
 						<div class="ui-widget">
-							<label for="search">Search: </label> <input  id="searchId" onkeyup="doAjaxCall()">   
+							<label for="search">Search: </label> <input  id="searchId" >   
 							
 							<input type="button" value ="Search" onclick="searchGo();"/>
 						</div>

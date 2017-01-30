@@ -35,7 +35,7 @@ public class SearchController {
 		if(!(ObjectUtils.isEmpty(user))){
 		if (user.getUsername() != null && !user.getUsername().equals("")) {
 			session.setAttribute("user", user);
-			mav = new ModelAndView("redirect:/home");
+			mav = new ModelAndView("redirect:/intro");
 		  }
 		} else {
 			mav = new ModelAndView("redirect:/");
@@ -45,10 +45,10 @@ public class SearchController {
 
 	
 
-	@RequestMapping(value = "home")
+	@RequestMapping(value = "intro")
 	public String home() {
 		System.out.println("home ");
-		return "firstPage.html";
+		return "explainPage.html";
 	}
 
 	@RequestMapping(value = "logout")
