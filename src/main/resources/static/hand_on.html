@@ -8,6 +8,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
 
 nav.navbar.navbar {
@@ -74,6 +78,14 @@ button.btn.btn-primary.button3 {
 .bodyStyle {
     background-color: #dcd8d8;
 }
+
+div.scroll {
+    width: 98%;
+    height: 400px;
+    overflow: scroll;
+    
+} 
+
 </style>
   </head>
 
@@ -117,25 +129,39 @@ button.btn.btn-primary.button3 {
 			</div>
 			<div class="row" id="secondRow">
 				<div class="panel panel-default">
-					<div class="panel-body">Aktuelles Level : Neueinsteiger <br> Gesammelte Punkte: 60
+					<div id="showValue" class="panel-body"> 
 					</div>
 				</div>
 			</div>
 		</div>		
 	</div>	
 	
-	<div class="row">
+	 <div class="row">
+		
 		<div class="col-md-12" id="mainContent"> 
-			<iframe src="sample.html" style="width:98%; height:400px;" frameborder="0">
-			</iframe>
+			<div class="scroll">
+				<iframe src="sample.html"  style="width:98%; height:400px;" >
+				</iframe>
+			</div>
 		</div>	
-	</div>
+	</div> 
+	
+	<!-- 
+	<div  >
+		<div class="scroll"> 
+			<iframe src="sample.html">
+  <p>Your browser does not support iframes.</p>
+</iframe> 
+			
+		</div>	
+	</div> -->
+	
 	<div class="row">
 		<div class="col-md-3" > 
 			<button type="button"  class="btn btn-primary button1" id="aufgabe" onclick= "aufgabe();">Aufgabe Lösen</button>
 		</div>	
 		<div class="col-md-6" > 
-			<button type="button" class="btn btn-primary button2" id="hinweis" onclick="hinweis();"><< Hinweis zur Lösung erhalten >></button>
+			<button type="button" class="btn btn-primary button2" id="hinweis" onclick="hinweis();"> Hinweis zur Lösung erhalten </button>
 		</div>	
 		<div class="col-md-3" > 
 			<button type="button" class="btn btn-primary button3" id="zuruck" onclick="zuruck();">zurück zur Erläuterung</button>
@@ -146,26 +172,105 @@ button.btn.btn-primary.button3 {
 	
 	
 </div>
+
+<div id="dialog-confirm"> </div>
 	
+
 
 </body>
 
-<script>
+
+
+ <script>
+
+var aux=60;
+var divMsg="Aktuelles Level : Neueinsteiger <br> Gesammelte Punkte: ";
+$("#showValue").append(divMsg +   aux );
 
 var aufgabe = function(){
+	var isOk = confirm("Press a button!");
+	if(isOk==true){
+		aux-=50;
+		alert("Sie hätten folgenden Text eingeben können: Billerstedt AND Speiseplan");
+		
+		var html = "<html><head></head><body><div id='msg'>";
+		html += "<h2 style='text-align:center;'> Sie haben die Aufgabe erfolgreich </h2>";
+		html += "<h2 style='text-align:center;'>gelöst!</h2>";
+		html += "<h2 id='punkte' style='text-align:center;'>Punkte: </h2>";
+		
+        popUp(html);
+        
+        //aux-=50;
+		$("#punkte").append(" " +   aux + "!" );
+		
+
+		
+	}
 	
-	var temp = confirm("Press a button!");
 	
-	alert("Temp  : "  + temp);
 	
+}
+
+
+var hinweis = function(){
+		aux-=10;
+		
+	$("#dialog-confirm").append("Um einen Speiseplan zu finden, würde sich beispielsweise der Suchbegriff Kantine oder Speiseplan in Verbindung mit dem Ort anbieten." );
+   	 $("#dialog-confirm").dialog('open');
+   	 
+   	$('#showValue').html('');
+   	$("#showValue").append(divMsg +   aux );
+   	
+ 
+			
+
+	
+}
+
+
+
+var zuruck = function(){
+	window.open("explainPage.html", "_self");
+	
+	
+}
+
+
+
+function popUp(html){
+
+var frog = window.open("result.html","_self")
+frog.document.open()
+frog.document.write(html)
+frog.document.close()
+
 }
 
 var handle =  function(e){
     if(e.keyCode === 13){
         e.preventDefault(); 
 
-        alert("Enter was pressed was presses");
+        
     }
 }
+
+$( function() {
+    $( "#dialog-confirm" ).dialog({
+      resizable: false,
+      height: "auto",
+      autoOpen: false,
+      width: 400,
+      modal: true,
+      buttons: {
+        "OK": function() {
+          $( this ).dialog( "close" );
+        },
+       /*  Cancel: function() {
+          $( this ).dialog( "close" );
+        } */
+      }
+    });
+  } );
+
 </script>
 </html>

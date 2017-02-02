@@ -6,12 +6,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
 <style>
 body {
     background-repeat: no-repeat;
 	background-image: url('img/background1.png');
+	
 }
 p {
     position: fixed;
@@ -22,6 +34,12 @@ input[type="text"] {
     width: 454px;
     height: 44px;
 }
+
+
+.ui-dialog, .ui-dialog, .ui-widget, .ui-widget-content,
+.ui-corner-all, .foo{
+    background: lightblue; /*color sample*/
+}​
 </style>
 
 
@@ -30,7 +48,11 @@ input[type="text"] {
 <p><input type="text" value="" id="searchElement" placeholder="Type here to search" onkeypress="handle(event);"></p>
 	
 
+<div id="dialog-confirm"> </div>
+
 </body>
+
+
 
 <script>
 
@@ -42,12 +64,14 @@ var mandatoryKeyWords=["Billerstedt"];
 var mandatFlag=0;
 var optionalFlag = 0;
 
+var aux=60;
+
 var handle =  function(e){
     if(e.keyCode === 13){
         e.preventDefault(); 
 
         searchVal = document.getElementById("searchElement").value; 
-        alert(searchVal);
+       
         
         var searchaElements= searchVal.split(" ");
         
@@ -59,13 +83,76 @@ var handle =  function(e){
         	}
         	
         	for(j=0; j<optionalKeyWords.length; j++) {
-        		if(searchaElements[i]==mandatoryKeyWords[j])
+        		if(searchaElements[i]==optionalKeyWords[j])
         			optionalFlag++;
         	}
         }
+       alert("mandatFlag : " + mandatFlag + "optionalFlag : " + optionalFlag );
         
+        if((mandatFlag < 1) || (optionalFlag<1)){
+        	
+        	alert("Leider haben Sie nicht den richtigen Suchbegriff eingegeben");
+        	$("#dialog-confirm").append("Leider haben Sie nicht den richtigen Suchbegriff eingegeben" );
+        	 $("#dialog-confirm").dialog('open');
+        	
+        	
+        	
+        }else{
+        	
+        	
         
+       	aux+=50;
+        var html = "<html><head></head><body><div id='msg'>";
+		html += "<h2 style='text-align:center;'> Sie haben die Aufgabe erfolgreich </h2>";
+		html += "<h2 style='text-align:center;'>gelöst!</h2>";
+		html += "<h2 id='punkte1' style='text-align:center;'>Punkte: " + aux + "</h2>";
+		//html += " " + aux + "!";
+		// alert('aux : ' + aux);
+		
+		 
+		
+		  popUp(html);
+		  
+		//  $("#punkte1").append(" " +   aux + "!" );
+		
+		  
+		 
+        //	window.open('result.html','_parent');/* <a href="#"location.href='result.html'/> */
+        }
+        
+        mandatFlag =0;
+  		optionalFlag=0;
     }
+}
+
+$( function() {
+    $( "#dialog-confirm" ).dialog({
+      resizable: false,
+      height: "auto",
+      autoOpen: false,
+      width: 400,
+      modal: true,
+      buttons: {
+        "OK": function() {
+          $( this ).dialog( "close" );
+        },
+       /*  Cancel: function() {
+          $( this ).dialog( "close" );
+        } */
+      }
+    });
+  } );	
+
+
+
+
+function popUp(html){
+
+var frog = window.open("result.html","_parent")
+frog.document.open()
+frog.document.write(html)
+frog.document.close()
+
 }
 
 </script>
