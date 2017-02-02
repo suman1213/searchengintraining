@@ -188,38 +188,72 @@ var divMsg="Aktuelles Level : Neueinsteiger <br> Gesammelte Punkte: ";
 $("#showValue").append(divMsg +   aux );
 
 var aufgabe = function(){
-	var isOk = confirm("Press a button!");
-	if(isOk==true){
-		aux-=50;
-		alert("Sie hätten folgenden Text eingeben können: Billerstedt AND Speiseplan");
 		
-		var html = "<html><head></head><body><div id='msg'>";
+		//alert("Sie hätten folgenden Text eingeben können: Billerstedt AND Speiseplan");
+		
+		if(aux >=50 ){
+			aux-=50;
+			$("#dialog-confirm").html('');		
+			$("#dialog-confirm").append("Sie hätten folgenden Text eingeben können: Billerstedt AND Speiseplan." );
+		   	$("#dialog-confirm").dialog('open');
+		   	
+		 	$('#showValue').html('');
+		   	$("#showValue").append(divMsg +   aux );
+		   	
+		   	 var html = "<html><head></head><body><div id='msg'>";
+			html += "<h2 style='text-align:center;'> Sie haben die Aufgabe erfolgreich </h2>";
+			html += "<h2 style='text-align:center;'>gelöst!</h2>";
+			html += "<h2 id='punkte' style='text-align:center;'>Punkte: </h2>"; 
+			
+	         popUp(html);
+	        
+	        //aux-=50;
+			$("#punkte").append(" " +   aux + "!" ); 
+			
+		}else{
+			$("#dialog-confirm").html('');		
+			$("#dialog-confirm").append("Leider verfügen Sie nicht über ausreichend Punkte um die Aufgabe lösen zu lassen." );
+		   	$("#dialog-confirm").dialog('open');
+		
+			
+		}
+		
+		/* var html = "<html><head></head><body><div id='msg'>";
 		html += "<h2 style='text-align:center;'> Sie haben die Aufgabe erfolgreich </h2>";
 		html += "<h2 style='text-align:center;'>gelöst!</h2>";
-		html += "<h2 id='punkte' style='text-align:center;'>Punkte: </h2>";
+		html += "<h2 id='punkte' style='text-align:center;'>Punkte: </h2>"; */
 		
-        popUp(html);
+       /*  popUp(html);
         
         //aux-=50;
-		$("#punkte").append(" " +   aux + "!" );
+		$("#punkte").append(" " +   aux + "!" ); */
 		
 
-		
-	}
-	
-	
-	
 }
+	
+	
+	
+
 
 
 var hinweis = function(){
-		aux-=10;
+	
+	if(aux <10 ){
 		
+		$("#dialog-confirm").html('');		
+		$("#dialog-confirm").append("Leider verfügen Sie nicht über ausreichend Punkte um sich einen Hinweis zur Lösung anzeigen zu lassen." );
+	   	$("#dialog-confirm").dialog('open');
+		
+	}else{
+		aux-=10;
+		$("#dialog-confirm").html('');		
 	$("#dialog-confirm").append("Um einen Speiseplan zu finden, würde sich beispielsweise der Suchbegriff Kantine oder Speiseplan in Verbindung mit dem Ort anbieten." );
    	 $("#dialog-confirm").dialog('open');
    	 
    	$('#showValue').html('');
    	$("#showValue").append(divMsg +   aux );
+   	
+	}
    	
  
 			
